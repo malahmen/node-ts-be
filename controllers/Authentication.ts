@@ -42,7 +42,7 @@ class AuthenticationController{
       // return the information including token as JSON
       return response.status(200).send({ auth: true, token: token });
     } catch(error) {
-      console.log(JSON.stringify(error));
+      console.error(JSON.stringify(error));
       return response.status(500).send(this.responseFormat.apply('Server side error.'));
     }
   }
@@ -70,7 +70,7 @@ class AuthenticationController{
     
       response.status(200).send( JSON.stringify(user) );  
     } catch( error ) {
-      console.log(JSON.stringify(error));
+      console.error(JSON.stringify(error));
       return response.status(500).send(this.responseFormat.apply('Server side error.')); 
     }
   }
@@ -83,7 +83,7 @@ class AuthenticationController{
       if (!user) return response.status(404).send(this.responseFormat.apply("Who are you?"));
       response.status(200).send(user);
     } catch(error) {
-      console.log(JSON.stringify(error));
+      console.error(JSON.stringify(error));
       if (error) return response.status(500).send(this.responseFormat.apply("You just crashed the server...hacker."));
     }
   }
